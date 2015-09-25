@@ -18,6 +18,10 @@ module GeohashHelper
            :neighbors, :pointer
 
     def self.release(ptr)
+      tmp = GeohashHelper::GeoHashRadius.new(ptr)
+      GeohashHelper.free_object(tmp[:hash])
+      GeohashHelper::GeoHashArea.release(tmp[:area])
+      GeohashHelper::GeoHashArea.release(tmp[:neighbors])
       GeohashHelper.free_object(ptr)
     end
   end
@@ -48,6 +52,10 @@ module GeohashHelper
            :latitude, :pointer
 
     def self.release(ptr)
+      tmp = GeohashHelper::GeoHashArea.new(ptr)
+      GeohashHelper.free_object(tmp[:hash])
+      GeohashHelper.free_object(tmp[:longitude])
+      GeohashHelper.free_object(tmp[:latitude])
       GeohashHelper.free_object(ptr)
     end
   end
@@ -64,6 +72,15 @@ module GeohashHelper
            :south_west,  :pointer
 
     def self.release(ptr)
+      tmp = GeohashHelper::GeoHashNeighbors.new(ptr)
+      GeohashHelper.free_object(tmp[:north])
+      GeohashHelper.free_object(tmp[:east])
+      GeohashHelper.free_object(tmp[:west])
+      GeohashHelper.free_object(tmp[:south])
+      GeohashHelper.free_object(tmp[:north_east])
+      GeohashHelper.free_object(tmp[:south_east])
+      GeohashHelper.free_object(tmp[:north_west])
+      GeohashHelper.free_object(tmp[:south_west])
       GeohashHelper.free_object(ptr)
     end
   end
@@ -100,6 +117,11 @@ module GeohashHelper
   # input is a geohash string
   # output is a pointer to a GeoHashNeighbors
   attach_function :geohashNeighborsFromStr, [:string], :pointer
+
+  # frees the memory of the pointer
+  # input is a pointer
+  # void output
+  attach_function :free_object, [:pointer], :void
 
   # functions from the original c files
   # slight modifications to take in and return pointers instead of structs

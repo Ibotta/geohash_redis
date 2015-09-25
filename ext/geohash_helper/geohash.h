@@ -96,6 +96,8 @@ typedef struct {
  * 0:success
  * -1:failed
  */
+void free_object(void* pointer_to_memory);
+
 void geohashGetCoordRange(GeoHashRange *long_range, GeoHashRange *lat_range);
 
 char* geohashEncodeToStr(double longitude, double latitude, int strlen);
