@@ -109,6 +109,10 @@ static inline uint64_t deinterleave64(uint64_t interleaved) {
     return x | (y << 32);
 }
 
+void free_object(void* pointer_to_memory) {
+    free(pointer_to_memory);
+}
+
 GeoHashNeighbors* geohashNeighborsFromStr(char* geohash_str) {
     GeoHashNeighbors *neighbors = malloc(sizeof(GeoHashNeighbors));
     neighbors->north = malloc(sizeof(GeoHashBits));
