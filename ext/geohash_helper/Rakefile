@@ -1,0 +1,14 @@
+require 'rubygems'
+require 'ffi-compiler/compile_task'
+
+def gem_spec
+  @gem_spec ||= Gem::Specification.load('geohash_helper.gemspec')
+end
+
+FFI::Compiler::CompileTask.new('geohash_helper') do |c|
+	c.have_header?('geohash.h', 'ext')
+	c.have_header?('geohash_helper.h', 'ext')
+  c.cflags << "-arch x86_64 -arch i386" if c.platform.mac?
+  c.ldflags << "-arch x86_64 -arch i386" if c.platform.mac?
+  c.export('../../lib/geohash_helper/geohash_helper.rb')
+end
