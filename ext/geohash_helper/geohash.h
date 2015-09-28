@@ -51,6 +51,8 @@ extern "C" {
 /* Limits from EPSG:900913 / EPSG:3785 / OSGEO:41001 */
 #define GEO_LAT_MIN -85.05112878
 #define GEO_LAT_MAX 85.05112878
+#define GEO_LAT_MIN_FULL -90
+#define GEO_LAT_MAX_FULL 90
 #define GEO_LONG_MIN -180
 #define GEO_LONG_MAX 180
 
@@ -99,6 +101,8 @@ typedef struct {
 void free_object(void* pointer_to_memory);
 
 void geohashGetCoordRange(GeoHashRange *long_range, GeoHashRange *lat_range);
+
+void geohashGetCoordRangeFull(GeoHashRange *long_range, GeoHashRange *lat_range);
 
 char* geohashEncodeToStr(double longitude, double latitude, int strlen);
 

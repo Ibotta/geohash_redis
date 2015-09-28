@@ -139,10 +139,10 @@ GeoHashRadius* geohashGetAreasByRadius(double longitude, double latitude, double
 
     steps = geohashEstimateStepsByRadius(radius_meters,latitude);
 
-    geohashGetCoordRange(&long_range, &lat_range);
+    geohashGetCoordRangeFull(&long_range, &lat_range);
     geohashEncode(&long_range, &lat_range, longitude, latitude, steps, radius->hash);
     geohashNeighbors(radius->hash, radius->neighbors);
-    geohashGetCoordRange(&long_range, &lat_range);
+    geohashGetCoordRangeFull(&long_range, &lat_range);
     geohashDecode(&long_range, &lat_range, radius->hash, radius->area);
 
     if (radius->area->latitude->min < min_lat) {

@@ -180,6 +180,14 @@ void geohashGetCoordRange(GeoHashRange *long_range, GeoHashRange *lat_range) {
     lat_range->min = GEO_LAT_MIN;
 }
 
+void geohashGetCoordRangeFull(GeoHashRAnge *long_range, GeoHashRange *lat_range) {
+    /* full range for the latitude */
+    long_range->max = GEO_LONG_MAX;
+    long_range->min = GEO_LONG_MIN;
+    lat_range->max = GEO_LAT_MAX_FULL;
+    lat_range->min = GEO_LAT_MIN_FULL;
+}
+
 char* geohashEncodeToStr(double longitude, double latitude, int str_len) {
     char *geoalphabet= "0123456789bcdefghjkmnpqrstuvwxyz";
 
