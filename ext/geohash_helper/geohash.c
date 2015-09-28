@@ -180,7 +180,7 @@ void geohashGetCoordRange(GeoHashRange *long_range, GeoHashRange *lat_range) {
     lat_range->min = GEO_LAT_MIN;
 }
 
-void geohashGetCoordRangeFull(GeoHashRAnge *long_range, GeoHashRange *lat_range) {
+void geohashGetCoordRangeFull(GeoHashRange *long_range, GeoHashRange *lat_range) {
     /* full range for the latitude */
     long_range->max = GEO_LONG_MAX;
     long_range->min = GEO_LONG_MIN;
