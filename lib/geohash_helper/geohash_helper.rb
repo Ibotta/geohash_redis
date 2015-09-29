@@ -128,7 +128,7 @@ module GeohashHelper
   attach_function :geohashGetDistanceIfInRadius, [:double, :double, :double, :double, :double, :pointer], :int
   attach_function :geohashGetDistanceIfInRadiusWGS84, [:double, :double, :double, :double, :double, :pointer], :int
 
-  def geohashGetAreasByRadiusToStrList(longitude, latitude, radius)
+  def self.geohashGetAreasByRadiusToStrList(longitude, latitude, radius)
     str_list = []
     radius_ptr = GeohashHelper.geohashGetAreasByRadius(longitude, latitude, radius)
     radius = GeohashHelper::GeoHashRadius.new(radius_ptr)
