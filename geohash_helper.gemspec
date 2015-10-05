@@ -1,6 +1,6 @@
 Gem::Specification.new "geohash_helper" do |s|
   s.name = 'geohash_helper'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.date = '2015-10-05'
   s.summary = "Geohash Helper Functions from Redis Github Repository"
   s.description = "useful geohash helper functions such as get area by radius from the redis github repository"
