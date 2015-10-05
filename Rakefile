@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rubygems/package_task'
+require 'ffi'
 require 'ffi-compiler/compile_task'
 
 def gem_spec

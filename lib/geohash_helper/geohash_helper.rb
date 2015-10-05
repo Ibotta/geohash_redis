@@ -8,7 +8,7 @@ require 'ffi-compiler/loader'
 # Some of the structs themselves were also changed for easier access by ffi
 
 module GeohashHelper
-  
+
   # GeoHashRadius's members were changed from structs to pointers
   # If I were to keep the members as structs, I would need to write getter methods
   # and the methods would return pointers to the structs anyways
@@ -75,27 +75,27 @@ module GeohashHelper
   # inputs are longitude, latitude, and radius (in meters)
   # output is a pointer to a GeoHashArea
   attach_function :geohashGetAreasByRadius, [:double, :double, :double], :pointer
-  
+
   # converts geo coords into a geohash string
   # inputs are longitude, latitude, and string length
   # output is a geohash string
   attach_function :geohashEncodeToStr, [:double, :double, :int], :string
-  
+
   # converts a geohash string to an area
   # input is a geohash string
   # output is a pointer to a GeoHashArea
   attach_function :geohashDecodeToArea, [:string], :pointer
-  
+
   # converts a geohash bits value to a geohash string
   # input is a pointer to a GeoHashBits
   # output is a geohash string
   attach_function :geohashBitsToStr, [:pointer], :string
-  
+
   # converts a geohash stringto a geohash bits value
   # input is a geohash string
   # output is a pointer to a GeoHashBits
   attach_function :geohashStrToBits, [:string], :pointer
-  
+
   # gets the neighbors of a geohash given its string
   # input is a geohash string
   # output is a pointer to a GeoHashNeighbors
